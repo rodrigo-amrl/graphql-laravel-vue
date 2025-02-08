@@ -5,7 +5,9 @@ type Query {
     users: [User!]! @paginate(defaultCount: 10)
     user(id: ID @eq): User @find
     posts: [Post!]! @paginate(defaultCount: 10) @orderBy(column: "created_at",direction: DESC)
+    postsResolver: [Post!]! @field(resolver:"App\\GraphQL\\Queries\\PostsResolver")
     post(id: ID @eq): Post @find
+    postResolver(id:ID!): Post @field(resolver:"App\\GraphQL\\Queries\\PostResolver")
 }
 type Mutation{
   createPost(
@@ -13,7 +15,11 @@ type Mutation{
     title:String! @rules(aplly:["required","min:3"])
     body:String! @rules(aplly:["required","min:3"])
   ):Post @create
-
+  createPostResolver(
+    user_id:ID!
+    title:String! @rules(aplly:["required","min:3"])
+    body:String! @rules(aplly:["required","min:3"])
+  ):Post  @field(resolver:"App\\GraphQL\\Queries\\CreatePostResolver")
   updatePost(
     id:ID!
     title:String! @rules(aplly:["required","min:3"])
