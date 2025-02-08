@@ -12,18 +12,18 @@ type Query {
 type Mutation{
   createPost(
     user_id:ID!
-    title:String! @rules(aplly:["required","min:3"])
-    body:String! @rules(aplly:["required","min:3"])
+    title:String! @rules(apply:["required","min:3"])
+    body:String! @rules(apply:["required","min:3"])
   ):Post @create
   createPostResolver(
     user_id:ID!
-    title:String! @rules(aplly:["required","min:3"])
-    body:String! @rules(aplly:["required","min:3"])
-  ):Post  @field(resolver:"App\\GraphQL\\Queries\\CreatePostResolver")
+    title:String! @rules(apply:["required","min:3"])
+    body:String! @rules(apply:["required","min:3"])
+  ):Post  @field(resolver:"App\\GraphQL\\Mutations\\CreatePostResolver")
   updatePost(
     id:ID!
-    title:String! @rules(aplly:["required","min:3"])
-    body:String! @rules(aplly:["required","min:3"])
+    title:String! @rules(apply:["required","min:3"])
+    body:String! @rules(apply:["required","min:3"])
   ):Post @update
 
    deletePost(
