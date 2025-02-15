@@ -6,6 +6,8 @@ import App from './App.vue'
 import router from './router'
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
 import { createApolloProvider } from '@vue/apollo-option'
+import VueApolloComponents from '@vue/apollo-components'
+
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
@@ -29,5 +31,6 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(apolloProvider)
+app.use(VueApolloComponents)
 
 app.mount('#app')
