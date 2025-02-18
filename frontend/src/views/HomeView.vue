@@ -1,16 +1,14 @@
 <template>
   <div>
+    <h2>Posts</h2>
     <div v-if="$apollo.queries.posts.loading">Loading...</div>
     <ul v-else>
       <li v-for="post in posts" :key="post.id">
-        <router-link :to="{ name: 'post', params: { id: post.id } }">View
-          {{ post.title }}
-
-        </router-link>
+        <router-link :to="{ name: 'post', params: { id: post.id } }"> {{ post.title }}</router-link>
       </li>
     </ul>
     <div>
-      <h2>Apolo Query Component</h2>
+      <h2> Posts Apolo Query Component</h2>
       <ApolloQuery :query="gql => gql`
           query getPosts {
             posts {
